@@ -1,0 +1,62 @@
+div data-controller='archive' style="text-align: center;"
+  div
+    span.box style="font-size: 24px" Коробка №
+    input.box data-archive-target='box'
+  video width="640" height="480" data-archive-target='webcam' autoplay
+  .patient-background
+    .patient style="color: red" data-archive-target='boxWarning' Сначала отсканируйте штрихкод коробки!
+    .patient data-archive-target='patient'
+    div style="display: none;" data-archive-target='confirm'
+      button data-action="archive#confirm" Да
+      button data-action="archive#reject" Нет
+    div style="display: none;" data-archive-target='abort'
+      button data-action="archive#abort" Отменить
+    input type="hidden" data-archive-target='pin' value="ready"
+  p
+  canvas style="display: none;" width="640" height="480" data-archive-target='canvas'
+  table data-archive-target='last'
+    - @cards.each do |card|
+      tr
+        td = card.pin
+        td = card.name
+        td = card.dr
+        td = card.box
+
+css:
+
+  video {
+    transform:rotate(180deg);
+  }
+
+  button {
+    margin-left: 10px;
+  }
+
+  table {
+    display: inline-block;
+  }
+
+  .patient-background {
+    height: 480px;
+    width: 640px;
+    display: inline-block;
+    text-align: center;
+    vertical-align: top;
+    margin-left: 10px;
+    font-weight: bold;
+  }
+
+  .patient {
+    margin-top: 40px;
+    font-size: 24px;
+  }
+
+  span.box {
+    font-weight: bold;
+  }
+
+  input.box {
+    display: inline-block;
+    background-color: #ecf6fe;
+    margin-left: 20px
+  }

@@ -31,5 +31,16 @@ module MedcardArchivist2
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    config.generators do |g|
+      g.orm             :active_record
+      g.template_engine :slim
+      g.test_framework  nil
+      g.stylesheets     false
+      g.javascripts     false
+      g.helper          false
+      g.assets          false
+      g.skip_routes     true
+    end
   end
 end
